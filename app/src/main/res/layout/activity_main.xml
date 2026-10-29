@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_dark"
+    android:padding="0dp">
+
+    <!-- ── Header ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        android:gravity="center_vertical"
+        android:background="@color/bg_panel">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="OpenEQ"
+            android:textColor="@color/accent"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace" />
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EQ ปิดอยู่"
+            android:textColor="@color/text_dim"
+            android:textSize="13sp"
+            android:paddingEnd="12dp" />
+
+        <ToggleButton
+            android:id="@+id/btnToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:textOn="ON"
+            android:textOff="OFF"
+            android:textSize="12sp"
+            android:checked="false" />
+    </LinearLayout>
+
+    <!-- ── Tab bar ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="@color/bg_darker">
+
+        <Button
+            android:id="@+id/tabParametric"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="PARAMETRIC"
+            android:textSize="12sp"
+            android:textColor="@color/text_bright"
+            android:letterSpacing="0.05" />
+
+        <Button
+            android:id="@+id/tabGraphic"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="GRAPHIC EQ"
+            android:textSize="12sp"
+            android:textColor="@color/text_bright"
+            android:letterSpacing="0.05" />
+    </LinearLayout>
+
+    <!-- ── EQ Graph (shared) ── -->
+    <com.openeeq.EqGraphView
+        android:id="@+id/eqGraph"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_margin="4dp" />
+
+    <!-- ── Preamp row ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="4dp"
+        android:gravity="center_vertical"
+        android:background="@color/bg_panel">
+
+        <TextView
+            android:id="@+id/labelPreamp"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="PREAMP  +0.0 dB"
+            android:textColor="@color/accent"
+            android:textSize="12sp"
+            android:fontFamily="monospace" />
+
+        <SeekBar
+            android:id="@+id/seekPreamp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <!-- ══════════════ PARAMETRIC PANEL ══════════════ -->
+    <LinearLayout
+        android:id="@+id/panelParametric"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:background="@color/bg_panel"
+        android:visibility="visible">
+
+        <!-- Band selector row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BAND "
+                android:textColor="@color/text_dim"
+                android:textSize="12sp" />
+
+            <Button android:id="@+id/btnBand1" style="@style/BandBtn" android:layout_width="0dp" android:layout_weight="1" />
+            <Button android:id="@+id/btnBand2" style="@style/BandBtn" android:layout_width="0dp" android:layout_weight="1" />
+            <Button android:id="@+id/btnBand3" style="@style/BandBtn" android:layout_width="0dp" android:layout_weight="1" />
+            <Button android:id="@+id/btnBand4" style="@style/BandBtn" android:layout_width="0dp" android:layout_weight="1" />
+            <Button android:id="@+id/btnBand5" style="@style/BandBtn" android:layout_width="0dp" android:layout_weight="1" />
+            <Button android:id="@+id/btnBand6" style="@style/BandBtn" android:layout_width="0dp" android:layout_weight="1" />
+            <Button android:id="@+id/btnBand7" style="@style/BandBtn" android:layout_width="0dp" android:layout_weight="1" />
+            <Button android:id="@+id/btnBand8" style="@style/BandBtn" android:layout_width="0dp" android:layout_weight="1" />
+        </LinearLayout>
+
+        <!-- Hz slider -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/labelHz"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Hz  1000"
+                android:textColor="@color/text_bright"
+                android:textSize="12sp"
+                android:fontFamily="monospace" />
+            <SeekBar
+                android:id="@+id/seekHz"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <!-- dB slider -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/labelDb"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="dB  +0.0"
+                android:textColor="@color/text_bright"
+                android:textSize="12sp"
+                android:fontFamily="monospace" />
+            <SeekBar
+                android:id="@+id/seekDb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <!-- Q slider -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/labelQ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Q  1.0"
+                android:textColor="@color/text_bright"
+                android:textSize="12sp"
+                android:fontFamily="monospace" />
+            <SeekBar
+                android:id="@+id/seekQ"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <!-- Action buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="4dp"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/btnClearBand"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="ลบจุดนี้"
+                android:textColor="@color/text_dim"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnClearAll"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="ล้างทั้งหมด"
+                android:textColor="@color/danger"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ══════════════ GRAPHIC EQ PANEL ══════════════ -->
+    <LinearLayout
+        android:id="@+id/panelGraphic"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:background="@color/bg_panel"
+        android:visibility="gone">
+
+        <!-- 10-band vertical seekbars -->
+        <LinearLayout
+            android:id="@+id/graphicBandContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingTop="8dp"
+            android:gravity="center_vertical" />
+
+        <Button
+            android:id="@+id/btnFlatGraphic"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:text="FLAT"
+            android:textColor="@color/text_dim"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>
