@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.OpenEQ" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:statusBarColor">@color/bg_darker</item>
+        <item name="android:navigationBarColor">@color/bg_darker</item>
+    </style>
+
+    <style name="BandBtn" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_height">36dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:padding">0dp</item>
+    </style>
+</resources>
